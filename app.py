@@ -59,8 +59,8 @@ def fetch_trailer(movie_id):
     for video in movie_trailer:
         if video['type']=='Trailer' and video['site']=='YouTube':
             return f"https://www.youtube.com/watch?v={video['key']}"
-    else:
-     return "No trailer"
+
+    return "No trailer"
 
 nbrs = NearestNeighbors(n_neighbors=6, metric='cosine').fit(tfidf_matrix)
 
@@ -104,11 +104,11 @@ if st.button("Show Recommendations"):
                     st.markdown(f"**Release:** {dates[i]}")
                     st.markdown(f"**Rating:** ({ratings[i]})")
                     st.write(overviews[i][:200] + "...")
-                    if rec_trailers[i] and rec_trailers[i] !="No tailer":
-                        st.markdown("**Watch Trailer:**")
-                        st.video(rec_trailers[i])
-       
+                    trailer_url = rec_trailers[i]
+                    if trailer_url != "No trailer":
+                        st.video(trailer_url)
                     else:
                         st.write("No trailer available")
+
         else:
             st.error("No matching movies found. Try another title.")
