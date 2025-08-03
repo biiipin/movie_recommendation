@@ -24,7 +24,7 @@ st.markdown(
 )
 
 
-movies = pickle.load(open("Movies_data.pkl", "rb"))
+movies = pickle.load(open("movies_data.pkl", "rb"))
 tfidf_matrix = pickle.load(open("tfidf_matrix.pkl", "rb"))
 
 st.title("🎬 Movie Recommender 🎬")
